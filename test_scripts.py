@@ -1,8 +1,5 @@
 import numpy as np
 import random
-import copy
-import pandas
-from typing import NoReturn, Tuple, List
 
 
 from src.read_prepare_data import (
@@ -229,3 +226,4 @@ class TestKNN:
             knn.fit(X_train, y_train)
             res = knn.predict(X_test)
             assert set(res).issubset(set(y_train))
+
