@@ -26,5 +26,6 @@
 
 ### Snakemake
 [Файл для snakemake](Snakefile)
+
 [DAG](reports/dag.svg)
 
