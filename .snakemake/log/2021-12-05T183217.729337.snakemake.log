@@ -1,0 +1,45 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count    min threads    max threads
+-----------------------  -------  -------------  -------------
+all                            1              1              1
+cancer_precision_recall        1              1              1
+cancer_roc_curve               1              1              1
+spam_precision_recall          1              1              1
+total                          4              1              1
+
+Select jobs to execute...
+
+[Sun Dec  5 18:32:18 2021]
+rule cancer_roc_curve:
+    input: data/cancer.csv
+    output: reports/plots/knn_cancer_roc_curve.png
+    jobid: 4
+    resources: tmpdir=/tmp
+
+[Sun Dec  5 18:32:24 2021]
+Finished job 4.
+1 of 4 steps (25%) done
+Select jobs to execute...
+
+[Sun Dec  5 18:32:24 2021]
+rule spam_precision_recall:
+    input: data/spam.csv
+    output: reports/plots/knn_spam_recall.png, reports/plots/knn_spam_precision.png, reports/plots/knn_spam_accuracy.png
+    jobid: 1
+    resources: tmpdir=/tmp
+
+[Sun Dec  5 18:32:26 2021]
+Error in rule spam_precision_recall:
+    jobid: 1
+    output: reports/plots/knn_spam_recall.png, reports/plots/knn_spam_precision.png, reports/plots/knn_spam_accuracy.png
+    shell:
+        python3 cli.py precision-recall data/spam.csv reports/plots/knn_spam_recall.png reports/plots/knn_spam_precision.png reports/plots/knn_spam_accuracy.png
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/alena/gits/hse-ml-project/.snakemake/log/2021-12-05T183217.729337.snakemake.log

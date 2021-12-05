@@ -6,6 +6,7 @@
 + data - данные
 + notebooks - ноутбук с аналогичным кодом, как в src/
 + reports - отчеты
++ reports/plots - графики
 + src - скрипты
 
 
@@ -17,4 +18,14 @@
 [Coverage report](reports/coverage.md)
 
 [Скрипт с тестами](test_scripts.py)
+
+
+### CLI
+[CLI interface для функций из src](cli.py)
+
+
+### Snakemake
+[Файл для snakemake](Snakefile)
+
+[DAG](reports/dag.svg)
 

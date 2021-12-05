@@ -43,7 +43,7 @@ def get_precision_recall_accuracy(
     return np.array(presisions), np.array(recalls), accuracy
 
 
-def plot_precision_recall(X_train, y_train, X_test, y_test, max_k=30):
+def plot_precision_recall(X_train, y_train, X_test, y_test, output_path, max_k=30):
     ks = list(range(1, max_k + 1))
     classes = len(np.unique(list(y_train) + list(y_test)))
     precisions = [[] for _ in range(classes)]
@@ -70,14 +70,18 @@ def plot_precision_recall(X_train, y_train, X_test, y_test, max_k=30):
         if legend:
             plt.legend()
         plt.tight_layout()
-        plt.show()
+        
 
     plot(ks, recalls, "Recall")
+    plt.savefig(output_path[0])
     plot(ks, precisions, "Precision")
+    plt.savefig(output_path[1])
     plot(ks, [accuracies], "Accuracy", legend=False)
+    plt.savefig(output_path[2])
 
 
-def plot_roc_curve(X_train, y_train, X_test, y_test, max_k=30):
+
+def plot_roc_curve(X_train, y_train, X_test, y_test, output_path, max_k=30):
     positive_samples = sum(1 for y in y_test if y == 0)
     ks = list(range(1, max_k + 1))
     curves_tpr = []
@@ -109,6 +113,8 @@ def plot_roc_curve(X_train, y_train, X_test, y_test, max_k=30):
     plt.xlabel("False positive rate")
     plt.ylabel("True positive rate")
     plt.xlim(-0.01, 1.01)
+
     plt.ylim(-0.01, 1.01)
     plt.tight_layout()
-    plt.show()
+    plt.savefig(output_path)
+    
