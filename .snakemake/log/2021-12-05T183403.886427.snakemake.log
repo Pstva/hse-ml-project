@@ -1,0 +1,48 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count    min threads    max threads
+-----------------------  -------  -------------  -------------
+all                            1              1              1
+cancer_precision_recall        1              1              1
+spam_precision_recall          1              1              1
+total                          3              1              1
+
+Select jobs to execute...
+
+[Sun Dec  5 18:34:04 2021]
+rule cancer_precision_recall:
+    input: data/cancer.csv
+    output: reports/plots/knn_cancer_recall.png, reports/plots/knn_cancer_precision.png, reports/plots/knn_cancer_accuracy.png
+    jobid: 2
+    resources: tmpdir=/tmp
+
+[Sun Dec  5 18:34:09 2021]
+Finished job 2.
+1 of 3 steps (33%) done
+Select jobs to execute...
+
+[Sun Dec  5 18:34:09 2021]
+rule spam_precision_recall:
+    input: data/spam.csv
+    output: reports/plots/knn_spam_recall.png, reports/plots/knn_spam_precision.png, reports/plots/knn_spam_accuracy.png
+    jobid: 1
+    resources: tmpdir=/tmp
+
+[Sun Dec  5 18:35:33 2021]
+Finished job 1.
+2 of 3 steps (67%) done
+Select jobs to execute...
+
+[Sun Dec  5 18:35:33 2021]
+localrule all:
+    input: reports/plots/knn_spam_accuracy.png, reports/plots/knn_spam_precision.png, reports/plots/knn_spam_recall.png, reports/plots/knn_cancer_accuracy.png, reports/plots/knn_cancer_precision.png, reports/plots/knn_cancer_recall.png, reports/plots/knn_spam_roc_curve.png, reports/plots/knn_cancer_roc_curve.png
+    jobid: 0
+    resources: tmpdir=/tmp
+
+[Sun Dec  5 18:35:33 2021]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: /home/alena/gits/hse-ml-project/.snakemake/log/2021-12-05T183403.886427.snakemake.log
